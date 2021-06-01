@@ -1,25 +1,17 @@
-import {useState, useEffect} from 'react'
-import {fetchListApi} from '../../api/index'
-import * as _ from 'lodash'
+import {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getEmployeeList } from '../../redux/actions/employees'
 
 const usePagination = (page=1, limit=5) => {
-  const [data, setData] = useState([])
-  const [total, setTotal] = useState(0)
-
-  const getData = async () => {
-    const res = await fetchListApi(page, limit)
-    if (res) {
-      const list = _.get(res, 'data.list', [])
-      const itemsTotal = _.get(res, 'data.total', 0)
-      setData(list)
-      setTotal(itemsTotal)
-    }
-  }
+  const dispatch = useDispatch()
+  const employees = useSelector(state => state.employees.data)
+  const loading = useSelector(state => state.employees.loading)
+  const total = useSelector(state => state.employees.total)
 
   useEffect(() => {
-    getData()
-  }, [page])
-  return [data, total]
+    dispatch(getEmployeeList(page, limit))
+  }, [page, limit, dispatch])
+  return [loading, employees, total]
 }
 
 export default usePagination
