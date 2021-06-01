@@ -11,8 +11,8 @@ const CounterComp = () => {
     <>
       <p>Counter = {count}</p>
       <p>
-        <button onClick={increaseCounter}>Increase</button>
-        <button onClick={resetCounter}>Reset</button>
+        <button onClick={increaseCounter} style={{padding: 5, marginRight: 10, backgroundColor: 'green', color: 'white', cursor: 'pointer'}}>Increase</button>
+        <button onClick={resetCounter} style={{padding: 5, backgroundColor: 'green', color: 'white', cursor: 'pointer'}}>Reset</button>
       </p>
     </>
   )

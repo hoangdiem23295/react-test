@@ -2,33 +2,27 @@ import React from 'react'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 import CounterComp from './components/counter/CounterComp'
 import DataList from './components/dataList/DataList'
+import SideBar from './components/sidebar/index'
+import {StyledMainContent} from './styled'
 function App() {
   return (
     <div className="App">
       <Router>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/counter">Counter</Link>
-            </li>
-            <li>
-              <Link to="/data-list">Data List</Link>
-            </li>
-          </ul>
-        </nav>
-        <Switch>
-          <Route path="/counter">
-            <CounterComp></CounterComp>
-          </Route>
-          <Route path="/data-list">
-            <DataList></DataList>
-          </Route>
-        </Switch>
+        <SideBar></SideBar>
+        <StyledMainContent>
+          <Switch>
+            <Route exact path="/">
+              <CounterComp></CounterComp>
+            </Route>
+            <Route path="/data-list">
+              <DataList></DataList>
+            </Route>
+          </Switch>
+        </StyledMainContent>
       </Router>
     </div>
   );
