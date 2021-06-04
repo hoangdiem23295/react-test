@@ -1,16 +1,14 @@
-import React, {useState, useMemo} from 'react'
+import React, {useState} from 'react'
 import './list.css'
 import usePagination from './usePagination'
-import { getTotalPages } from '../../helpers/index';
+import { BASE_URL } from '../../constant/index'
 import { LIMIT_EMPLOYEES_PAGE } from '../../constant/index'
 
 const DataList = () => {
   const [pageActive, setPageActive] = useState(1)
   const [
-    loading, employees, total
-  ] = usePagination(pageActive, LIMIT_EMPLOYEES_PAGE)
-  const totalPages = useMemo(() => getTotalPages(total, LIMIT_EMPLOYEES_PAGE), [total])
-  const paginationArr = Array(totalPages).fill().map((_, index)=>index+1)
+    loading, employees, paginationArr
+  ] = usePagination(pageActive, LIMIT_EMPLOYEES_PAGE, BASE_URL)
   
   return (
     <div>

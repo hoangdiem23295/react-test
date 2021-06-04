@@ -46,8 +46,8 @@ apiClient.interceptors.response.use(
 );
 
 // API fetch Employee List 
-export const fetchListApi = (page=1, limit=5) =>
-  apiClient.get(`${BASE_URL}/?page=${page}&limit=${limit}`);
+export const fetchListApi = (page=1, limit=5, url='') =>
+  apiClient.get(`${url}/?page=${page}&limit=${limit}`);
 
 // API Create A new Employee 
 export const createItemApi = (data) =>

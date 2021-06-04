@@ -1,6 +1,6 @@
 import * as type from '../types'
 
-export function getEmployeeList(...params) {
+export function getDataList(...params) {
   return {
     type: type.GET_EMPLOYEELIST_REQUESTED,
     payload: params
